@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sophivorus",
-			"Fitoschido"
+			"Fitoschido",
+			"Sophivorus"
 		]
 	},
-	"mobiledetect-desc": "Detecta dispositivos móviles y permite controlar el contenido que es visible en cada caso con las etiquetas &lt;nomobile&gt; y &lt;mobileonly&gt;"
+	"mobiledetect-desc": "Detecta dispositivos móviles y permite controlar el contenido que es visible en cada caso con las etiquetas <code>&lt;nomobile&gt;</code> y <code>&lt;mobileonly&gt;</code>."
 }
