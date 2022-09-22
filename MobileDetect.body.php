@@ -2,8 +2,14 @@
 
 class MobileDetect {
 
+	private static $_isMobile;
+
+	private function __construct() {
+		self::$_isMobile = self::isMobile();
+	}
+
 	public static function addModule( &$output ) {
-		if ( MobileDetect::isMobile() ) {
+		if ( self::$_isMobile ) {
 			$output->addModuleStyles( 'ext.MobileDetect.mobileonly' );
 		} else {
 			$output->addModuleStyles( 'ext.MobileDetect.nomobile' );
@@ -11,16 +17,30 @@ class MobileDetect {
 	}
 
 	public static function setParserHook( &$parser ) {
-		$parser->setHook( 'mobileonly', 'MobileDetect::mobileonly' );
 		$parser->setHook( 'nomobile', 'MobileDetect::nomobile' );
+		$parser->setHook( 'mobileonly', 'MobileDetect::mobileonly' );
 	}
 
 	public static function nomobile( $input, array $args, Parser $parser, PPFrame $frame ) {
-		return '<div class="nomobile">' . $parser->recursiveTagParse( $input ) . '</div>';
+		if ( self::$_isMobile ) {
+			// Remove content within tag <nomobile>
+			$parser->recursiveTagParse( $input, $frame );
+			return '';
+		} else {
+			// Only remove tag <nomobile>
+			return $parser->recursiveTagParse( $input, $frame );
+		}
 	}
 
 	public static function mobileonly( $input, array $args, Parser $parser, PPFrame $frame ) {
-		return '<div class="mobileonly">' . $parser->recursiveTagParse( $input ) . '</div>';
+		if ( self::$_isMobile ) {
+			// Only remove tag <mobileonly>
+			return $parser->recursiveTagParse( $input, $frame );
+		} else {
+			// Remove content within tag <mobileonly>
+			$parser->recursiveTagParse( $input, $frame );
+			return '';
+		}
 	}
 
 	public static function isMobile() {
