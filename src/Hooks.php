@@ -13,12 +13,18 @@ class Hooks implements
 	BeforePageDisplayHook,
 	ParserFirstCallInitHook
 {
+	private static $_isMobile;
+
+	private function __construct() {
+		self::$_isMobile = self::isMobile();
+	}
+
 	/**
 	 * @param OutputPage $out
 	 * @param Skin $skin
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
-		if ( self::isMobile() ) {
+		if ( self::$_isMobile ) {
 			$out->addModuleStyles( [ 'ext.MobileDetect.mobileonly' ] );
 		} else {
 			$out->addModuleStyles( [ 'ext.MobileDetect.nomobile' ] );
@@ -41,7 +47,14 @@ class Hooks implements
 	 * @return string
 	 */
 	public static function nomobile( $input, array $args, Parser $parser, PPFrame $frame ) {
-		return '<div class="nomobile">' . $parser->recursiveTagParse( $input ) . '</div>';
+		if ( self::$_isMobile ) {
+			// Remove content within tag <nomobile>
+			$parser->recursiveTagParse( $input, $frame );
+			return '';
+		} else {
+			// Only remove tag <nomobile>
+			return $parser->recursiveTagParse( $input, $frame );
+		}
 	}
 
 	/**
@@ -52,7 +65,14 @@ class Hooks implements
 	 * @return string
 	 */
 	public static function mobileonly( $input, array $args, Parser $parser, PPFrame $frame ) {
-		return '<div class="mobileonly">' . $parser->recursiveTagParse( $input ) . '</div>';
+		if ( self::$_isMobile ) {
+			// Only remove tag <mobileonly>
+			return $parser->recursiveTagParse( $input, $frame );
+		} else {
+			// Remove content within tag <mobileonly>
+			$parser->recursiveTagParse( $input, $frame );
+			return '';
+		}
 	}
 
 	/**
