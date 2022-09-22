@@ -4,5 +4,5 @@
 			"Metalhead64"
 		]
 	},
-	"mobiledetect-desc": "Erkennt mobile Geräte und erlaubt die Kontrolle des sichtbaren Inhalts in jedem Fall mit den Tags &lt;nomobile&gt; und &lt;mobileonly&gt;"
+	"mobiledetect-desc": "Erkennt mobile Geräte und erlaubt die Kontrolle des sichtbaren Inhalts in jedem Fall mit den Tags <code>&lt;nomobile&gt;</code> und <code>&lt;mobileonly&gt;</code>."
 }

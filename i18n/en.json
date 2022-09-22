@@ -4,5 +4,5 @@
 			"Sophivorus"
 		]
 	},
-	"mobiledetect-desc": "Detects mobile devices and allows to control the content visible in each case with the &lt;nomobile&gt; and &lt;mobileonly&gt; tags"
+	"mobiledetect-desc": "Detects mobile devices and allows to control the content visible in each case with the <code>&lt;nomobile&gt;</code> and <code>&lt;mobileonly&gt;</code> tags."
 }
