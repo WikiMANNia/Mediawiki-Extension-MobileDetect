@@ -14,19 +14,19 @@ $wgExtensionCredits['parserhook'][] = [
 
 $wgMessagesDirs['MobileDetect'] = __DIR__ . '/i18n';
 
-$wgAutoloadClasses['MobileDetect'] = __DIR__ . '/MobileDetect.body.php';
+$wgAutoloadClasses['MobileDetect'] = __DIR__ . '/src/MobileDetect.php';
 
 $wgHooks['BeforePageDisplay'][] = 'MobileDetect::addModule';
 $wgHooks['ParserFirstCallInit'][] = 'MobileDetect::setParserHook';
 
 $wgResourceModules['ext.MobileDetect.mobileonly'] = [
-	'styles' => 'MobileDetect.mobileonly.css',
+	'styles' => 'modules/mobileonly.css',
 	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'MobileDetect',
 ];
 
 $wgResourceModules['ext.MobileDetect.nomobile'] = [
-	'styles' => 'MobileDetect.nomobile.css',
+	'styles' => 'modules/nomobile.css',
 	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'MobileDetect',
 ];
