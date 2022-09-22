@@ -4,25 +4,29 @@ class MobileDetect {
 
 	private static $_isMobile;
 
-	private function __construct() {
-		self::$_isMobile = self::isMobile();
+	private static function getIsMobile() {
+		if ( self::$_isMobile === null ) {
+			self::$_isMobile = self::isMobile();
+		}
+
+		return self::$_isMobile;
 	}
 
-	public static function addModule( &$output ) {
-		if ( self::$_isMobile ) {
-			$output->addModuleStyles( 'ext.MobileDetect.mobileonly' );
+	public static function addModule( &$out ) {
+		if ( self::getIsMobile() ) {
+			$out->addModuleStyles( 'ext.MobileDetect.mobileonly' );
 		} else {
-			$output->addModuleStyles( 'ext.MobileDetect.nomobile' );
+			$out->addModuleStyles( 'ext.MobileDetect.nomobile' );
 		}
 	}
 
 	public static function setParserHook( &$parser ) {
-		$parser->setHook( 'nomobile', 'MobileDetect::nomobile' );
 		$parser->setHook( 'mobileonly', 'MobileDetect::mobileonly' );
+		$parser->setHook( 'nomobile', 'MobileDetect::nomobile' );
 	}
 
 	public static function nomobile( $input, array $args, Parser $parser, PPFrame $frame ) {
-		if ( self::$_isMobile ) {
+		if ( self::getIsMobile() ) {
 			// Remove content within tag <nomobile>
 			$parser->recursiveTagParse( $input, $frame );
 			return '';
@@ -33,7 +37,7 @@ class MobileDetect {
 	}
 
 	public static function mobileonly( $input, array $args, Parser $parser, PPFrame $frame ) {
-		if ( self::$_isMobile ) {
+		if ( self::getIsMobile() ) {
 			// Only remove tag <mobileonly>
 			return $parser->recursiveTagParse( $input, $frame );
 		} else {
@@ -83,7 +87,7 @@ class MobileDetect {
 		}
 
 		// Detect WAP Support
-		if ( ( strpos( $http_accept, 'text/vnd.wap.wml') > 0 ) || ( strpos( $http_accept, 'application/vnd.wap.xhtml+xml' ) > 0 ) ) {
+		if ( ( strpos( $http_accept, 'text/vnd.wap.wml' ) > 0 ) || ( strpos( $http_accept, 'application/vnd.wap.xhtml+xml' ) > 0 ) ) {
 			return true;
 		}
 
