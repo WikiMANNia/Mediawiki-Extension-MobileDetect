@@ -4,5 +4,5 @@
 			"!Silent"
 		]
 	},
-	"mobiledetect-desc": "Detecta dispositivos móveis e permite controlar o conteúdo visível em cada caso através das etiquetas &lt;nomobile&gt; e &lt;mobileonly&gt;"
+	"mobiledetect-desc": "Detecta dispositivos móveis e permite controlar o conteúdo visível em cada caso através das etiquetas <code>&lt;nomobile&gt;</code> e <code>&lt;mobileonly&gt;</code>."
 }

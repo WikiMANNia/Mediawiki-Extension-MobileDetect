@@ -5,5 +5,5 @@
 			"Woytecr"
 		]
 	},
-	"mobiledetect-desc": "Wykrywa urządzenia mobilne i pozwala na kontrolę widoczności treści w każdym przypadku z użyciem znaczników <code>&lt;nomobile&gt;</code> oraz <code>&lt;mobileonly&gt;</code>"
+	"mobiledetect-desc": "Wykrywa urządzenia mobilne i pozwala na kontrolę widoczności treści w każdym przypadku z użyciem znaczników <code>&lt;nomobile&gt;</code> oraz <code>&lt;mobileonly&gt;</code>."
 }
