@@ -4,7 +4,8 @@
 	"author": [
 		"Matthew Tran",
 		"[https://mediawiki.org/wiki/User:Sophivorus Felipe Schenone]",
-		"Universal Omega"
+		"Universal Omega",
+		"[https://github.com/WikiMANNia/mediawiki-extensions-MobileDetect WikiMANNia]"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:MobileDetect",
 	"descriptionmsg": "mobiledetect-desc",
