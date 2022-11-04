@@ -13,7 +13,7 @@ class Hooks implements
 	BeforePageDisplayHook,
 	ParserFirstCallInitHook
 {
-private static $_isMobile;
+	private static $_isMobile;
 
 	private static function getIsMobile() {
 		if ( self::$_isMobile === null ) {
@@ -28,7 +28,7 @@ private static $_isMobile;
 	 * @param Skin $skin
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
-		if ( self::getIsMobile ) {
+		if ( self::getIsMobile() ) {
 			$out->addModuleStyles( [ 'ext.MobileDetect.mobileonly' ] );
 		} else {
 			$out->addModuleStyles( [ 'ext.MobileDetect.nomobile' ] );
@@ -51,7 +51,7 @@ private static $_isMobile;
 	 * @return string
 	 */
 	public static function nomobile( $input, array $args, Parser $parser, PPFrame $frame ) {
-		if ( self::getIsMobile ) {
+		if ( self::getIsMobile() ) {
 			// Remove content within tag <nomobile>
 			$parser->recursiveTagParse( $input, $frame );
 			return '';
@@ -69,7 +69,7 @@ private static $_isMobile;
 	 * @return string
 	 */
 	public static function mobileonly( $input, array $args, Parser $parser, PPFrame $frame ) {
-		if ( self::getIsMobile ) {
+		if ( self::getIsMobile() ) {
 			// Only remove tag <mobileonly>
 			return $parser->recursiveTagParse( $input, $frame );
 		} else {
