@@ -4,5 +4,5 @@
 			"Nokeoo"
 		]
 	},
-	"mobiledetect-desc": "Aptinka mobiliuosius įrenginius ir leidžia kiekvienu atveju valdyti matomą turinį naudojant &lt;nomobile&gt; ir &lt;mobileonly&gt; žymas"
+	"mobiledetect-desc": "Aptinka mobiliuosius įrenginius ir leidžia kiekvienu atveju valdyti matomą turinį naudojant <code>&lt;nomobile&gt;</code> ir <code>&lt;mobileonly&gt;</code> žymas."
 }

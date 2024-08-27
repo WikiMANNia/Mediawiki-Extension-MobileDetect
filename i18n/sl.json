@@ -4,5 +4,5 @@
 			"Eleassar"
 		]
 	},
-	"mobiledetect-desc": "Zazna mobilne naprave in z značkama &lt;nomobile&gt; in &lt;mobileonly&gt; omogoča nadzor v posameznem primeru prikazane vsebine"
+	"mobiledetect-desc": "Zazna mobilne naprave in z značkama <code>&lt;nomobile&gt;</code> in <code>&lt;mobileonly&gt;</code> omogoča nadzor v posameznem primeru prikazane vsebine."
 }
