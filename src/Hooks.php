@@ -24,13 +24,25 @@ class Hooks implements
 	}
 
 	/**
+	 * Extension registration callback, see extension.json.
+	 * This makes the global wfMobileDetect() function usable again.
+	 *
+	 * @see https://phabricator.wikimedia.org/T365912
+	 */
+	public static function onRegistration() {
+		require_once __DIR__ . '/../lib/MobileDetect.php';
+	}
+
+	/**
 	 * @param OutputPage $out
 	 * @param Skin $skin
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		if ( self::getIsMobile() ) {
+			$out->addJsConfigVars( 'wgIsMobile', true );
 			$out->addModuleStyles( [ 'ext.MobileDetect.mobileonly' ] );
 		} else {
+			$out->addJsConfigVars( 'wgIsMobile', false );
 			$out->addModuleStyles( [ 'ext.MobileDetect.nomobile' ] );
 		}
 	}
