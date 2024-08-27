@@ -2,12 +2,13 @@
 
 $wgExtensionCredits['parserhook'][] = [
 	'name' => 'MobileDetect',
-	'version' => '3.0',
+	'version' => '3.1',
 	'license-name' => 'GPL-3.0-only',
 	'descriptionmsg' => 'mobiledetect-desc',
 	'author' => [
 		'Matthew Tran',
-		'[https://mediawiki.org/wiki/User:Sophivorus Felipe Schenone]'
+		'[https://mediawiki.org/wiki/User:Sophivorus Felipe Schenone]',
+		'WikiMANNia'
 	],
 	'url' => 'https://www.mediawiki.org/wiki/Extension:MobileDetect',
 ];
@@ -20,13 +21,13 @@ $wgHooks['BeforePageDisplay'][] = 'MobileDetect::addModule';
 $wgHooks['ParserFirstCallInit'][] = 'MobileDetect::setParserHook';
 
 $wgResourceModules['ext.MobileDetect.mobileonly'] = [
-	'styles' => 'MobileDetect.mobileonly.css',
+	'styles' => 'modules/mobileonly.css',
 	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'MobileDetect',
 ];
 
 $wgResourceModules['ext.MobileDetect.nomobile'] = [
-	'styles' => 'MobileDetect.nomobile.css',
+	'styles' => 'modules/nomobile.css',
 	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'MobileDetect',
 ];
