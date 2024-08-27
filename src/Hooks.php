@@ -83,6 +83,13 @@ class Hooks implements
 	 * @return bool
 	 */
 	public static function isMobile() {
+
+		// Check if user enabled Mobile view using the 'Mobile' link at the bottom of the page
+		if ( isset( $_COOKIE["mf_useformat"] ) ) {
+			return ( $_COOKIE["mf_useformat"] === 'true' );
+		}
+
+
 		$user_agent = array_key_exists( 'HTTP_USER_AGENT', $_SERVER ) ? $_SERVER['HTTP_USER_AGENT'] : '';
 		$http_accept = array_key_exists( 'HTTP_ACCEPT', $_SERVER ) ? $_SERVER['HTTP_ACCEPT'] : '';
 
