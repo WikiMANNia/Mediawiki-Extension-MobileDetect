@@ -24,13 +24,25 @@ class Hooks implements
 	}
 
 	/**
+	 * Extension registration callback, see extension.json.
+	 * This makes the global wfMobileDetect() function usable again.
+	 *
+	 * @see https://phabricator.wikimedia.org/T365912
+	 */
+	public static function onRegistration() {
+		require_once __DIR__ . '/../lib/MobileDetect.php';
+	}
+
+	/**
 	 * @param OutputPage $out
 	 * @param Skin $skin
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		if ( self::getIsMobile() ) {
+			$out->addJsConfigVars( 'wgIsMobile', true );
 			$out->addModuleStyles( [ 'ext.MobileDetect.mobileonly' ] );
 		} else {
+			$out->addJsConfigVars( 'wgIsMobile', false );
 			$out->addModuleStyles( [ 'ext.MobileDetect.nomobile' ] );
 		}
 	}
@@ -83,6 +95,13 @@ class Hooks implements
 	 * @return bool
 	 */
 	public static function isMobile() {
+
+		// Check if user enabled Mobile view using the 'Mobile' link at the bottom of the page
+		if ( isset( $_COOKIE["mf_useformat"] ) ) {
+			return ( $_COOKIE["mf_useformat"] === 'true' );
+		}
+
+
 		$user_agent = array_key_exists( 'HTTP_USER_AGENT', $_SERVER ) ? $_SERVER['HTTP_USER_AGENT'] : '';
 		$http_accept = array_key_exists( 'HTTP_ACCEPT', $_SERVER ) ? $_SERVER['HTTP_ACCEPT'] : '';
 

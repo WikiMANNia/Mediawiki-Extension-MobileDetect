@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"mobiledetect-desc": "Zazna mobilne naprave in z značkama <code>&lt;nomobile&gt;</code> in <code>&lt;mobileonly&gt;</code> omogoča nadzor v posameznem primeru prikazane vsebine."
+}

@@ -1,6 +1,6 @@
 {
 	"name": "MobileDetect",
-	"version": "3.0",
+	"version": "3.1",
 	"author": [
 		"Matthew Tran",
 		"[https://mediawiki.org/wiki/User:Sophivorus Felipe Schenone]",
@@ -9,6 +9,7 @@
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:MobileDetect",
 	"descriptionmsg": "mobiledetect-desc",
+ 	"callback": "MediaWiki\\Extension\\MobileDetect\\Hooks::onRegistration",
 	"license-name": "GPL-3.0-only",
 	"type": "parserhook",
 	"requires": {
@@ -18,6 +19,9 @@
 		"MobileDetect": [
 			"i18n"
 		]
+	},
+	"ExtensionMessagesFiles": {
+		"MobileDetectMagic": "MobileDetect.i18n.magic.php"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\MobileDetect\\": "src/"

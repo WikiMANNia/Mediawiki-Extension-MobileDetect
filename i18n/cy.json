@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Afalau",
+			"Ceirios"
+		]
+	},
+	"mobiledetect-desc": "Cofnodi dyfeisiau symudol ac yn galluogi addasu'r cynnwys gyda thagiau <code>&lt;nomobile&gt;</code> a <code>&lt;mobileonly&gt;</code>."
+}

@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Verdy p"
 		]
 	},
-	"mobiledetect-desc": "Détecte les appareils mobiles et permet de contrôler le contenu visible dans chaque cas avec les balises <code>&lt;nomobile&gt;</code> et <code>&lt;mobileonly&gt;</code>."
+	"mobiledetect-desc": "Détecte les appareils mobiles et permet de contrôler le contenu visible dans chaque d'utilisation des balises <code>&lt;nomobile&gt;</code> et <code>&lt;mobileonly&gt;</code>."
 }
