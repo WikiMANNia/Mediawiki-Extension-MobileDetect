@@ -51,44 +51,49 @@ class Hooks implements
 	 * @param Parser $parser
 	 */
 	public function onParserFirstCallInit( $parser ) {
-		$parser->setHook( 'mobileonly', [ __CLASS__, 'mobileonly' ] );
-		$parser->setHook( 'nomobile', [ __CLASS__, 'nomobile' ] );
-	}
+		$parser->setHook( 'mobileonly', static function ( $input, array $args, Parser $parser, PPFrame $frame ) {
+			if ( self::getIsMobile() ) {
+				// Only remove tag <mobileonly>
+				return $parser->recursiveTagParse( $input, $frame );
+			} else {
+				// Remove content within tag <mobileonly>
+				$parser->recursiveTagParse( $input, $frame );
+				return '';
+			}
+		} );
 
-	/**
-	 * @param string $input
-	 * @param array $args
-	 * @param Parser $parser
-	 * @param PPFrame $frame
-	 * @return string
-	 */
-	public static function nomobile( $input, array $args, Parser $parser, PPFrame $frame ) {
-		if ( self::getIsMobile() ) {
-			// Remove content within tag <nomobile>
-			$parser->recursiveTagParse( $input, $frame );
-			return '';
-		} else {
-			// Only remove tag <nomobile>
-			return $parser->recursiveTagParse( $input, $frame );
-		}
-	}
+		$parser->setHook( 'nomobile', static function ( $input, array $args, Parser $parser, PPFrame $frame ) {
+			if ( self::getIsMobile() ) {
+				// Remove content within tag <nomobile>
+				$parser->recursiveTagParse( $input, $frame );
+				return '';
+			} else {
+				// Only remove tag <nomobile>
+				return $parser->recursiveTagParse( $input, $frame );
+			}
+		} );
 
-	/**
-	 * @param string $input
-	 * @param array $args
-	 * @param Parser $parser
-	 * @param PPFrame $frame
-	 * @return string
-	 */
-	public static function mobileonly( $input, array $args, Parser $parser, PPFrame $frame ) {
-		if ( self::getIsMobile() ) {
-			// Only remove tag <mobileonly>
-			return $parser->recursiveTagParse( $input, $frame );
-		} else {
-			// Remove content within tag <mobileonly>
-			$parser->recursiveTagParse( $input, $frame );
-			return '';
-		}
+		$parser->setFunctionHook( 'mobileonly', static function ( Parser $parser, $input = '' ) {
+			if ( self::getIsMobile() ) {
+				// Only remove tag <mobileonly>
+				return $parser->recursiveTagParse( $input );
+			} else {
+				// Remove content within tag <mobileonly>
+				$parser->recursiveTagParse( $input );
+				return '';
+			}
+		} );
+
+		$parser->setFunctionHook( 'nomobile', static function ( Parser $parser, $input = '' ) {
+			if ( self::getIsMobile() ) {
+				// Remove content within tag <nomobile>
+				$parser->recursiveTagParse( $input );
+				return '';
+			} else {
+				// Only remove tag <nomobile>
+				return $parser->recursiveTagParse( $input );
+			}
+		} );
 	}
 
 	/**
