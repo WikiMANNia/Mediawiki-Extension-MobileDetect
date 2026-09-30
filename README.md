@@ -1,6 +1,10 @@
 # mediawiki-extensions-MobileDetect
 Github mirror of  MediaWiki extension MobileDetect - our actual code is hosted with Gerrit (please see https://www.mediawiki.org/wiki/Developer_access for contributing
 
+# Compatibility
+
+This extension works from REL1_35 and has been tested to MediaWiki versions `1.35.14`, `1.39.17`, `1.43.9`, and `1.47.0-alpha`.
+
 # Version 3.0
 Please see the [Mediawiki](https://www.mediawiki.org/wiki/Extension:MobileDetect) for details.
 
@@ -10,5 +14,9 @@ Please see the [Mediawiki](https://www.mediawiki.org/wiki/Extension:MobileDetect
 - Fix - 25 Aug 2024: Check for presence of mobile view cookie `mf_useformat` - [Bug: T373268][diff](https://github.com/wikimedia/mediawiki-extensions-MobileDetect/commit/0b0797a8aa0e83dd9d3699c3bfbf659c14d060e2)
 
 # Version 3.2
-- 26 Sep 2022: Add #nomobile and #mobileonly parser hooks
-[diff](https://github.com/wikimedia/mediawiki-extensions-MobileDetect/commit/bb1131bf1eeb6c8ad0e177042d1d5be12f42e428)
+- 26 Sep 2022: Add #nomobile and #mobileonly parser hooks [diff](https://github.com/wikimedia/mediawiki-extensions-MobileDetect/commit/bb1131bf1eeb6c8ad0e177042d1d5be12f42e428)
+
+# Version 4.0
+
+* Refactoring classes, namespace and backward compatibility.
+* Add ´Compat.php´

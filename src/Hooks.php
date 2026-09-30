@@ -4,10 +4,10 @@ namespace MediaWiki\Extension\MobileDetect;
 
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\ParserFirstCallInitHook;
-use OutputPage;
-use Parser;
-use PPFrame;
-use Skin;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\PPFrame;
+use MediaWiki\Skin\Skin;
 
 class Hooks implements
 	BeforePageDisplayHook,
@@ -30,6 +30,7 @@ class Hooks implements
 	 * @see https://phabricator.wikimedia.org/T365912
 	 */
 	public static function onRegistration() {
+        Compat::init();
 		require_once __DIR__ . '/../lib/MobileDetect.php';
 	}
 
