@@ -97,7 +97,6 @@ Please see the [Mediawiki](https://www.mediawiki.org/wiki/Extension:MobileDetect
 
 ## Version 4.1
 
-* Add an explanation regarding of the use of the function `wfMobileDetect()`
 * Added `bootstrap.php` to support calling `wfMobileDetect()` from LocalSettings.php.
 * Added documentation explaining how to use `wfMobileDetect()` in LocalSettings.php.
 * Tested with PHP 8.2, 8.3, and 8.4.
