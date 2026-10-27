@@ -50,9 +50,10 @@ class Hooks implements
 
 	/**
 	 * @param Parser $parser
+	 * @param PPFrame $frame
 	 */
 	public function onParserFirstCallInit( $parser ) {
-		$parser->setHook( 'mobileonly', static function ( $input, array $args, Parser $parser, PPFrame $frame ) {
+		$parser->setHook( 'mobileonly', static function ( $input, array $args, $parser, $frame ) {
 			if ( self::getIsMobile() ) {
 				// Only remove tag <mobileonly>
 				return $parser->recursiveTagParse( $input, $frame );
@@ -63,7 +64,7 @@ class Hooks implements
 			}
 		} );
 
-		$parser->setHook( 'nomobile', static function ( $input, array $args, Parser $parser, PPFrame $frame ) {
+		$parser->setHook( 'nomobile', static function ( $input, array $args, $parser, $frame ) {
 			if ( self::getIsMobile() ) {
 				// Remove content within tag <nomobile>
 				$parser->recursiveTagParse( $input, $frame );
@@ -74,7 +75,7 @@ class Hooks implements
 			}
 		} );
 
-		$parser->setFunctionHook( 'mobileonly', static function ( Parser $parser, $input = '' ) {
+		$parser->setFunctionHook( 'mobileonly', static function ( $parser, $input = '' ) {
 			if ( self::getIsMobile() ) {
 				// Only remove tag <mobileonly>
 				return $parser->recursiveTagParse( $input );
@@ -85,7 +86,7 @@ class Hooks implements
 			}
 		} );
 
-		$parser->setFunctionHook( 'nomobile', static function ( Parser $parser, $input = '' ) {
+		$parser->setFunctionHook( 'nomobile', static function ( $parser, $input = '' ) {
 			if ( self::getIsMobile() ) {
 				// Remove content within tag <nomobile>
 				$parser->recursiveTagParse( $input );
