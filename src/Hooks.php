@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\MobileDetect;
 
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\ParserFirstCallInitHook;
+
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\PPFrame;
