@@ -4,5 +4,5 @@
 			"Wizzard"
 		]
 	},
-	"mobiledetect-desc": "Rozpoznáva mobilné zariadenia a umožňuje pomocou značiek &lt;nomobile&gt; a &lt;mobileonly&gt; riadiť, ktorý obsah sa v jednotlivých prípadoch zobrazí"
+	"mobiledetect-desc": "Rozpoznáva mobilné zariadenia a umožňuje pomocou značiek <code>&lt;nomobile&gt;</code> a <code>&lt;mobileonly&gt;</code> riadiť, ktorý obsah sa v jednotlivých prípadoch zobrazí"
 }

@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"mobiledetect-desc": "موبايل وسيلې مومي او د <code>&lt;nomobile&gt;</code> او  <code>&lt;mobileonly&gt;</code> نښلنونو سره ليدل شوې منځپانگې کابو کولو اجازه ورکوي."
+}
